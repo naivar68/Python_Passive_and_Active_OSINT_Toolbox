@@ -1,0 +1,4 @@
+db_setup = DatabaseSetup()
+db_setup.create_tables()
+db_setup.commit_and_close()
+
