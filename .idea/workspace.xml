@@ -5,27 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43dbc7ef-2a67-4eab-918a-be8b5f5936bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE.chromedriver" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/active/openports.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/active/subdomains.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/chromedriver.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/passive/domain.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/passive/email_discovery.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/passive/social_media_discovery.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/usernotes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Python_Passive_and_Active_OSINT_Toolbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Python_Passive_and_Active_OSINT_Toolbox.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/active/activeScripts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/passive/passiveScripts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passive/domain_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Charts/charts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passive/email_discovery.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passive/passive_notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/cleanser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passive/social_media_discovery.py" beforeDir="false" afterPath="$PROJECT_DIR$/code snippets.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charts/charts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/active/openports.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/active/subdomains.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/database_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/database_setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/passive_functions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/passive/domain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/passive/email_discovery.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/passive/social_media_discovery.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/usernotes.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,10 +74,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\dlu19\OSINT\Python_Passive_and_Active_OSINT_Toolbox\resources" />
+      <recent name="D:\dlu19\OSINT\Python_Passive_and_Active_OSINT_Toolbox\" />
       <recent name="D:\dlu19\OSINT\Python_Passive_and_Active_OSINT_Toolbox\active" />
       <recent name="D:\dlu19\OSINT\Python_Passive_and_Active_OSINT_Toolbox\passive" />
       <recent name="D:\dlu19\OSINT\Python_Passive_and_Active_OSINT_Toolbox" />
-      <recent name="D:\dlu19\OSINT\Python_Passive_and_Active_OSINT_Toolbox\resources\" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -106,9 +96,43 @@
       <option name="presentableId" value="Default" />
       <updated>1716705724265</updated>
     </task>
+    <task id="LOCAL-00001" summary="Changed the project structure and added new classes.">
+      <option name="closed" value="true" />
+      <created>1717136752393</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717136752393</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Changed the project structure and added new classes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the project structure and added new classes." />
   </component>
 </project>

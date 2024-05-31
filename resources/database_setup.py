@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+import time
 
 
 
@@ -81,29 +82,13 @@ class DatabaseSetup:
 
 
 
-# Create table: UserReports
+        # Create table: UserReports
         self.conn = sqlite3.connect(self.recon.db)
         self.c.execute('''CREATE TABLE IF NOT EXISTS UserReports    
                         (ReportTitle text, ReportContent text)''')
         self.conn.commit()
         self.conn.close()
 
-
-    def create_chart(self, chart_title, chart_data):
-        df = pd.DataFrame(chart_data)
-        df.plot(kind='bar')
-        plt.title(chart_title)
-        plt.show()
-        with open('chart.png', 'wb') as f:
-            plt.savefig(Charts/f)
-        plt.close()
-        conn = sqlite3.connect('recon.db')
-        c = conn.cursor()
-        c.execute("INSERT INTO ScreenshotsTaken VALUES (?, ?)", ('chart.png', chart_title))
-        conn.commit()
-        conn.close()
-
-        return f"Chart created and saved as {chart_title}.png"
 
     def create_user_report(self, report_title, report_content):
         conn = sqlite3.connect('recon.db')
@@ -120,6 +105,133 @@ class DatabaseSetup:
         # Commit the changes and close the connection
         self.conn.commit()
         self.conn.close()
+
+
+class Charts:
+    def __init__(self, username):
+        self.username = username
+        self.conn = sqlite3.connect('recon.db')
+        self.c = self.conn.cursor()
+        self.c.execute("CREATE TABLE IF NOT EXISTS UserNotes (Charts glob, Chart_Graphic TEXT)")
+        self.conn.commit()
+        self.conn.close()
+
+
+
+    def chart_data(self, chart_name):
+        self.conn = sqlite3.connect('recon.db')
+        self.c = self.conn.cursor()
+        self.c.execute("SELECT Chart_Graphic FROM Charts WHERE Chart_Graphic = ?", (chart_name,))
+        chart_data = self.c.fetchall()
+        self.conn.close()
+        return chart_data
+
+    def create_chart(self, chart_name, chart_data):
+        self.conn = sqlite3.connect('recon.db')
+        self.c = self.conn.cursor()
+        self.c.execute("INSERT INTO Charts (Chart_Graphic, Chart_Data) VALUES (?, ?)", (chart_name, chart_data))
+        self.conn.commit()
+        self.conn.close()
+        return True
+
+    def bar_chart(self, chart_name, chart_data):
+        chart_data = pd.read_csv(chart_data)
+        chart_data.plot(kind='bar')
+        plt.title(chart_name)
+        plt.savefig(chart_name + ".png")
+        plt.show()
+        self.create_chart(chart_name, chart_name + ".png")
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO Charts (Chart_Graphic, Chart_Data) VALUES (?, ?)", (chart_name, chart_name + ".png"))
+        conn.commit()
+        conn.close()
+        time.sleep(2)
+
+    def line_chart(self, chart_name, chart_data):
+        chart_data = pd.read_csv(chart_data)
+        chart_data.plot(kind='line')
+        plt.title(chart_name)
+        plt.savefig(chart_name + ".png")
+        plt.show()
+        self.create_chart(chart_name, chart_name + ".png")
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO Charts (Chart_Graphic, Chart_Data) VALUES (?, ?)", (chart_name, chart_name + ".png"))
+        conn.commit()
+        conn.close()
+        time.sleep(2)
+
+    def scatter_chart(self, chart_name, chart_data):
+        chart_data = pd.read_csv(chart_data)
+        chart_data.plot(kind='scatter')
+        plt.title(chart_name)
+        plt.savefig(chart_name + ".png")
+        plt.show()
+        self.create_chart(chart_name, chart_name + ".png")
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO Charts (Chart_Graphic, Chart_Data) VALUES (?, ?)", (chart_name, chart_name + ".png"))
+        conn.commit()
+        conn.close()
+        time.sleep(2)
+
+    def pie_chart(self, chart_name, chart_data):
+        chart_data = pd.read_csv(chart_data)
+        chart_data.plot(kind='pie')
+        plt.title(chart_name)
+        plt.savefig(chart_name + ".png")
+        plt.show()
+        self.create_chart(chart_name, chart_name + ".png")
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO Charts (Chart_Graphic, Chart_Data) VALUES (?, ?)", (chart_name, chart_name + ".png"))
+        conn.commit()
+        conn.close()
+        time.sleep(2)
+
+    def hist_chart(self, chart_name, chart_data):
+        chart_data = pd.read_csv(chart_data)
+        chart_data.plot(kind='hist')
+        plt.title(chart_name)
+        plt.savefig(chart_name + ".png")
+        plt.show()
+        self.create_chart(chart_name, chart_name + ".png")
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO Charts (Chart_Graphic, Chart_Data) VALUES (?, ?)", (chart_name, chart_name + ".png"))
+        conn.commit()
+        conn.close()
+        time.sleep(2)
+
+    def box_chart(self, chart_name, chart_data):
+        chart_data = pd.read_csv(chart_data)
+        chart_data.plot(kind='box')
+        plt.title(chart_name)
+        plt.savefig(chart_name + ".png")
+        plt.show()
+        self.create_chart(chart_name, chart_name + ".png")
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO Charts (Chart_Graphic, Chart_Data) VALUES (?, ?)", (chart_name, chart_name + ".png"))
+        conn.commit()
+        conn.close()
+        time.sleep(2)
+
+    def area_chart(self, chart_name, chart_data):
+        chart_data = pd.read_csv(chart_data)
+        chart_data.plot(kind='area')
+        plt.title(chart_name)
+        plt.savefig(chart_name + ".png")
+        plt.show()
+        self.create_chart(chart_name, chart_name + ".png")
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO Charts (Chart_Graphic, Chart_Data) VALUES (?, ?)", (chart_name, chart_name + ".png"))
+        conn.commit()
+        conn.close()
+        time.sleep(2)
+
 
 
 class User:
@@ -200,59 +312,46 @@ class User:
         conn.close()
         return f"Screenshot {screenshot_name} taken and saved."
 
-    def show_notes(self):
-        conn = sqlite3.connect('recon.db')
-        c = conn.cursor()
-        c.execute("SELECT * FROM UserNotes")
-        return c.fetchall()
 
-    def add_note(self, note_title, note_content):
-        conn = sqlite3.connect('recon.db')
-        c = conn.cursor()
-        c.execute("INSERT INTO UserNotes VALUES (?, ?)", (note_title, note_content))
-        conn.commit()
-        conn.close()
-        return f"Note {note_title} added."
+class UserNotes:
+    def __init__(self, username, password):
+        self.db_setup = DatabaseSetup()
+        self.username = username
+        self.password = password
 
-    def delete_note(self, note_title):
-        conn = sqlite3.connect('recon.db')
-        c = conn.cursor()
-        c.execute("DELETE FROM UserNotes WHERE NoteTitle = ?", (note_title,))
-        conn.commit()
-        conn.close()
-        return f"Note {note_title} deleted."
+    def authenticate(self):
+        return User.login(self.username, self.password)
 
-    def show_reports(self):
-        conn = sqlite3.connect('recon.db')
-        c = conn.cursor()
-        c.execute("SELECT * FROM UserReports")
-        return c.fetchall()
+    def add_note(self, title, content, username, password):
+        if not self.authenticate():
+            return "Invalid credentials"
+        else:
+            self.db_setup.c.execute("INSERT INTO UserNotes (NoteTitle, NoteContent) VALUES (?, ?)", (title, content))
+            self.db_setup.conn.commit()
+            
 
-    def add_report(self, report_title, report_content):
-        conn = sqlite3.connect('recon.db')
-        c = conn.cursor()
-        c.execute("INSERT INTO UserReports VALUES (?, ?)", (report_title, report_content))
-        conn.commit()
-        conn.close()
-        return f"Report {report_title} added."
+    def modify_note(self, title, new_title, new_content):
+        if not self.authenticate():
+            return "Invalid credentials"
+        self.db_setup.c.execute("UPDATE UserNotes SET NoteTitle = ?, NoteContent = ? WHERE NoteTitle = ?", (new_title, new_content, title))
+        self.db_setup.conn.commit()
 
-    def delete_report(self, report_title):
-        conn = sqlite3.connect('recon.db')
-        c = conn.cursor()
-        c.execute("DELETE FROM UserReports WHERE ReportTitle = ?", (report_title,))
-        conn.commit()
-        conn.close()
-        return f"Report {report_title} deleted."
-
-    def show_charts(self):
-        conn = sqlite3.connect('recon.db')
-        c = conn.cursor()
-        c.execute("SELECT * FROM ScreenshotsTaken")
-        return c.fetchall()
+    def delete_note(self, title, content, username, password):
+        if not self.authenticate():
+            return "Invalid credentials"
+        else:
+            self.db_setup.c.execute("DELETE FROM UserNotes WHERE NoteTitle = ?", (title,))
+            self.db_setup.conn.commit()
 
 
-
-
+    def get_notes(self, title, content, username, password):
+        if not self.authenticate():
+            return "Invalid credentials"
+        else:
+            self.db_setup.c.execute("SELECT * FROM UserNotes")
+            notes = self.db_setup.c.fetchall()
+            self.db_setup.conn.close()
+            return notes
 
 class writeToDB:
     def __init__(self, db_name='recon.db'):
