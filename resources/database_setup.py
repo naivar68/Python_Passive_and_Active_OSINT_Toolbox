@@ -1,13 +1,13 @@
-import sqlite3
-import hashlib
 import binascii
+import hashlib
+import sqlite3
 import subprocess
-import pandas as pd
-import matplotlib.pyplot as plt
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import time
 
+import matplotlib.pyplot as plt
+import pandas as pd
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 class CreateFolders:
@@ -24,7 +24,6 @@ class CreateFolders:
 
     def run_command(self, command):
         subprocess.run(command, shell=True)
-
 
 
 class DatabaseSetup:
@@ -80,15 +79,12 @@ class DatabaseSetup:
         self.c.execute('''CREATE TABLE IF NOT EXISTS UserNotes
                         (NoteTitle text, NoteContent text)''')
 
-
-
         # Create table: UserReports
         self.conn = sqlite3.connect(self.recon.db)
         self.c.execute('''CREATE TABLE IF NOT EXISTS UserReports    
                         (ReportTitle text, ReportContent text)''')
         self.conn.commit()
         self.conn.close()
-
 
     def create_user_report(self, report_title, report_content):
         conn = sqlite3.connect('recon.db')
@@ -97,9 +93,6 @@ class DatabaseSetup:
         conn.commit()
         conn.close()
         return f"Report {report_title} created and saved."
-
-
-
 
     def commit_and_close(self):
         # Commit the changes and close the connection
@@ -115,8 +108,6 @@ class Charts:
         self.c.execute("CREATE TABLE IF NOT EXISTS UserNotes (Charts glob, Chart_Graphic TEXT)")
         self.conn.commit()
         self.conn.close()
-
-
 
     def chart_data(self, chart_name):
         self.conn = sqlite3.connect('recon.db')
@@ -233,7 +224,6 @@ class Charts:
         time.sleep(2)
 
 
-
 class User:
     def __init__(self, username, password):
         self.username = username
@@ -328,12 +318,12 @@ class UserNotes:
         else:
             self.db_setup.c.execute("INSERT INTO UserNotes (NoteTitle, NoteContent) VALUES (?, ?)", (title, content))
             self.db_setup.conn.commit()
-            
 
     def modify_note(self, title, new_title, new_content):
         if not self.authenticate():
             return "Invalid credentials"
-        self.db_setup.c.execute("UPDATE UserNotes SET NoteTitle = ?, NoteContent = ? WHERE NoteTitle = ?", (new_title, new_content, title))
+        self.db_setup.c.execute("UPDATE UserNotes SET NoteTitle = ?, NoteContent = ? WHERE NoteTitle = ?",
+                                (new_title, new_content, title))
         self.db_setup.conn.commit()
 
     def delete_note(self, title, content, username, password):
@@ -342,7 +332,6 @@ class UserNotes:
         else:
             self.db_setup.c.execute("DELETE FROM UserNotes WHERE NoteTitle = ?", (title,))
             self.db_setup.conn.commit()
-
 
     def get_notes(self, title, content, username, password):
         if not self.authenticate():
@@ -353,6 +342,7 @@ class UserNotes:
             self.db_setup.conn.close()
             return notes
 
+
 class writeToDB:
     def __init__(self, db_name='recon.db'):
         self.db_name = db_name
@@ -360,53 +350,61 @@ class writeToDB:
         self.c = self.conn.cursor()
 
     def write_to_db(self, table, data):
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
         self.c.execute(f"INSERT INTO {table} VALUES (?, ?)", data)
         self.conn.commit()
         self.conn.close()
 
     def read_from_db(self, table):
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
         self.c.execute(f"SELECT * FROM {table}")
         return self.c.fetchall()
 
     def read_from_db_where(self, table, column, value):
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
         self.c.execute(f"SELECT * FROM {table} WHERE {column} = ?", (value,))
         return self.c.fetchall()
 
     def delete_from_db(self, table, column, value):
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
         self.c.execute(f"DELETE FROM {table} WHERE {column} = ?", (value,))
         self.conn.commit()
         self.conn.close()
 
     def update_db(self, table, column, value, new_value):
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
         self.c.execute(f"UPDATE {table} SET {column} = ? WHERE {column} = ?", (new_value, value))
         self.conn.commit()
         self.conn.close()
 
     def create_table(self, table, columns):
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
         self.c.execute(f"CREATE TABLE IF NOT EXISTS {table} {columns}")
         self.conn.commit()
         self.conn.close()
 
     def drop_table(self, table):
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
         self.c.execute(f"DROP TABLE {table}")
         self.conn.commit()
         self.conn.close()
 
     def show_tables(self):
+        conn = sqlite3.connect('recon.db')
+        c = conn.cursor()
         self.c.execute("SELECT name FROM sqlite_master WHERE type='table';")
         return self.c.fetchall()
+
 
 class EndProgram:
     def __init__(self):
         print("Program has ended.")
         exit(0)
         conn.close()
-
-
-
-
-
-
-
-
-

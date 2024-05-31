@@ -1,5 +1,5 @@
 from nmap import PortScanner
-from database_setup import writeToDB, readFromDB
+from resources import writeToDB
 from datetime import datetime
 import subprocess
 import pathlib

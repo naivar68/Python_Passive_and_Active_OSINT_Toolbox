@@ -1,13 +1,19 @@
 import subprocess
 from bash import bash
-import netstat
 import ipwhois
 from ipwhois import IPWhois
-from geoip import geolite2
+from ipwhois.utils import get_countries
+from ipwhois.net import Net
+from ipwhois.asn import IPASN
+import geolite
+import geoip2
+import geolite2utils
+import requests
 import sqlite3
 import hashlib
 import time
-import binasciifrom database_setup import DatabaseSetup
+import binascii
+from database_setup import DatabaseSetup
 from database_setup import writeToDB, read_from_db
 from email_queries import email_queries
 from bs4 import BeautifulSoup

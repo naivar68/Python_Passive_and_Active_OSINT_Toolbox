@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43dbc7ef-2a67-4eab-918a-be8b5f5936bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/active/activeScripts.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/passive/passiveScripts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Charts/charts.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/active/openports.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/active/subdomains.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/active/activeScripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/active/activeScripts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/database_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/database_setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/passive/domain.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/passive/email_discovery.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/passive/social_media_discovery.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/usernotes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/passive/passiveScripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/passive/passiveScripts.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +99,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717136752393</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Simplified the script structure in active and passive folders.">
+      <option name="closed" value="true" />
+      <created>1717158950521</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717158950521</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,7 +121,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -133,6 +136,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Changed the project structure and added new classes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the project structure and added new classes." />
+    <MESSAGE value="Simplified the script structure in active and passive folders." />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified the script structure in active and passive folders." />
   </component>
 </project>
