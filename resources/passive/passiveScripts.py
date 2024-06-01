@@ -13,9 +13,15 @@ import sqlite3
 import hashlib
 import time
 import binascii
-from database_setup import DatabaseSetup
-from database_setup import writeToDB, read_from_db
-from email_queries import email_queries
+from resources import (
+    DatabaseSetup,
+    writeToDB,
+    User,
+    UserNotes,
+    Charts,
+    EndProgram
+)
+
 from bs4 import BeautifulSoup
 
 class Domain:

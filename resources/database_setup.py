@@ -356,10 +356,10 @@ class writeToDB:
         self.conn.commit()
         self.conn.close()
 
-    def read_from_db(self, table):
+    def read_from_db(self, tables):
         conn = sqlite3.connect('recon.db')
         c = conn.cursor()
-        self.c.execute(f"SELECT * FROM {table}")
+        self.c.execute(f"SELECT * FROM {tables}")
         return self.c.fetchall()
 
     def read_from_db_where(self, table, column, value):
