@@ -1,105 +1,120 @@
 # Import necessary modules
-import subprocess
-import pathlib
-import hashlib
-import binascii
-from datetime import datetime
 import streamlit as st
-from sklearn import datasets
-import numpy as np
-import pandas as pd
-import sys
 
 # Import from resources
-from resources import (
-    DatabaseSetup,
-    writeToDB,
-    User,
-    UserNotes,
-    OpenPorts,
-    runningServices,
-    SubdomainFinder,
-    Domain,
-    EmailDiscovery,
-    SocialMediaDiscovery,
-    Charts,
-    EndProgram
-)
+from resources import EndProgram, Pages
 
 # Set the title of the application
 TITLE = "Python OSINT Toolbox"
 
-
-def display_file_content(file):
-    content = file.read().decode("utf-8")
-    st.subheader(f"Filename: {file.name}")
-    st.code(content, language="python")
-
-
-def button_clicks():
-    button_style = """
-    <style>
-    div.stButton > button {
-        width: 150px;
-        height: 40px;
+button_style = """
+<style>
+    .stButton>button {
+        color: white;
+        background-color: #1E90FF;
+        border-color: #1E90FF;
     }
-    </style>
-    """
-    st.markdown(button_style, unsafe_allow_html=True)
+</style>
+"""
+
+
+st.set_page_config(layout="wide")
+
+
+
+st.markdown(button_style, unsafe_allow_html=True)
+
+
+
+# Define the button clicks
+
+
+def button_clicks(page_placeholder):
+
+    pages = Pages(page_placeholder)
 
     col1, col2, col3, col4, col5, col6 = st.columns(6)
     with col1:
         if st.button("SignUp"):
-            User()
-    with col2:
+            pages.signup_page()
+
         if st.button("Login"):
-            User()
-    with col3:
+            pages.login_page()
+
         if st.button("Forgot Password"):
-            User()
-    with col4:
+            pages.forgot_password_page()
+
+
+
+    with col2:
+        if st.button("User Profile"):
+            pages.user_profile_page()
+
+        if st.button("Help"):
+            pages.help_page()
+
+
+    with col3:
         if st.button("Active OSINT"):
-            pass
-    with col5:
+            pages.active_osint_page()
+
         if st.button("Passive OSINT"):
-            pass
+            pages.passive_osint_page()
+
+
+    with col4:
+        if st.button("Logout"):
+            pages.exit_page()
+
+        if st.button("Settings"):
+            pages.settings_page()
+
+
+    with col5:
+        if st.button("Contact Us"):
+            pages.contact_us_page()
+
+        if st.button("Reports"):
+            pages.reports_page()
+
+
+
     with col6:
         if st.button("Exit"):
             EndProgram()
 
-
 def main():
     st.title("Python OSINT Active and Passive Toolbox")
 
-    # Display buttons horizontally
-    button_clicks()
+    page_placeholder = st.empty()
+
+    button_clicks(page_placeholder)
+
+
+
 
     # Descriptive text
+    st.subheader("Welcome to the Python OSINT Toolbox")
     st.write("This is a Python OSINT toolbox that can be used for both passive and active OSINT operations. ")
     st.write("The toolbox is designed to be used by security researchers, penetration testers, and bug bounty hunters.")
     st.write("The toolbox is divided into two main sections: Passive OSINT and Active OSINT.")
-    st.write(
-        "The Passive OSINT section contains tools for collecting information about a target without directly interacting with the target.")
-    st.write("The Active OSINT section contains tools for interacting with the target to collect information.")
-    st.write("The toolbox is designed to be modular, so new tools can be easily added or removed.")
-    st.write("The toolbox is also designed to be extensible, so new functionality can be easily added.")
-    st.write(
-        "The toolbox is built using the Streamlit framework, which allows for easy creation of web-based applications in Python.")
-    st.write("The toolbox is open-source and can be freely used, modified, and distributed.")
+
     st.write("The toolbox is intended for educational and research purposes only. Use at your own risk.")
     st.write("The toolbox is provided as-is, with no warranties or guarantees of any kind.")
     st.write("The toolbox is not affiliated with any government agency or organization.")
-    st.write("The toolbox is not intended for illegal or unethical activities.")
-    st.write("The toolbox is not intended to be used for hacking or other malicious purposes.")
-
+    st.empty()
     # Display the sidebar
     st.sidebar.title(TITLE)
     st.sidebar.write("Welcome to the Python OSINT Toolbox.")
     st.sidebar.write("This toolbox is designed to help you collect information about a target.")
-
-    # Buttons in the sidebar
-    button_clicks()
-
+    st.sidebar.write("The Passive OSINT section contains tools for collecting information about a target without directly interacting with the target.")
+    st.sidebar.write("The Active OSINT section contains tools for interacting with the target to collect information.")
+    st.sidebar.write("Things are designed to be modular, so new tools can be easily added or removed.")
+    st.sidebar.write("A work in progress, POAPT is also designed to be extensible, so new functionality can be easily added.")
+    st.sidebar.write("POAPT is built using the Streamlit framework, which allows for easy creation of web-based applications in "
+             "Python.")
+    st.sidebar.write("The toolbox is open-source and can be freely used, modified, and distributed.")
+    st.empty()
     uploaded_files = st.file_uploader("Choose Python files", type=["py"], accept_multiple_files=True)
 
     if uploaded_files:
